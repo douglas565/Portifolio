@@ -9,12 +9,12 @@ class Slider {
         this.currentSlideIndex = 0;
         this.preloadedImages = {};
         this.certificates = [
-            "/certificados/Certificados/introdução_a_web.pdf",
-            "/certificados/Certificados/Iniciação_cientifica.pdf",
-            "/certificados/Certificados/Certificado_Técnico_em_eletrotecnica.pdf",
-            "/certificados/Certificados/SQL - Alura.pdf",
-            "/certificados/Certificados/Douglas Ramos Charqueiro - Formação Engenharia de software - Alura.pdf",
-            "/certificados/Certificados/Certificado_imerção_Dev_com_gemini.pdf"
+            "certificados/Certificados/introdução_a_web.pdf",
+            "certificados/Certificados/Iniciação_cientifica.pdf",
+            "certificados/Certificados/Certificado_Técnico_em_eletrotecnica.pdf",
+            "certificados/Certificados/SQL - Alura.pdf",
+            "certificados/Certificados/Douglas Ramos Charqueiro - Formação Engenharia de software - Alura.pdf",
+            "certificados/Certificados/Certificado_imerção_Dev_com_gemini.pdf"
         ];
 
         this.initialize();
