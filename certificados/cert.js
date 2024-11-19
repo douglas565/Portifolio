@@ -111,5 +111,3 @@ class Slider {
 }
 
 const ImageSlider = new Slider(document.querySelector(".image-slider"));
-
-
