@@ -9,12 +9,12 @@ class Slider {
         this.currentSlideIndex = 0;
         this.preloadedImages = {};
         this.certificates = [
-            "certificados/pdf/web",
-            "certificados/pdf/IC.pdf",
-            "certificados/pdf/tec.pdf",
-            "certificados/pdf/sql.pdf",
-            "certificados/pdf/eng.pdf",
-            "certificados/pdf/gemini.pdf"
+            "pdf/web.pdf",
+            "pdf/IC.pdf",
+            "pdf/tec.pdf",
+            "pdf/sql.pdf",
+            "pdf/eng.pdf",
+            "pdf/gemini.pdf"
         ];
 
         this.initialize();
