@@ -9,7 +9,7 @@ class Slider {
         this.currentSlideIndex = 0;
         this.preloadedImages = {};
         this.certificates = [
-            "certificados/pdf/introdução_a_web.pdf",
+            "certificados/pdf/web",
             "certificados/Certificados/Iniciação_cientifica.pdf",
             "certificados/Certificados/Certificado_Técnico_em_eletrotecnica.pdf",
             "certificados/Certificados/SQL - Alura.pdf",
