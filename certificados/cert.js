@@ -10,11 +10,11 @@ class Slider {
         this.preloadedImages = {};
         this.certificates = [
             "certificados/pdf/web",
-            "certificados/Certificados/Iniciação_cientifica.pdf",
-            "certificados/Certificados/Certificado_Técnico_em_eletrotecnica.pdf",
-            "certificados/Certificados/SQL - Alura.pdf",
-            "certificados/Certificados/Douglas Ramos Charqueiro - Formação Engenharia de software - Alura.pdf",
-            "certificados/Certificados/Certificado_imerção_Dev_com_gemini.pdf"
+            "certificados/pdf/IC.pdf",
+            "certificados/pdf/tec.pdf",
+            "certificados/pdf/sql.pdf",
+            "certificados/pdf/eng.pdf",
+            "certificados/pdf/gemini.pdf"
         ];
 
         this.initialize();
