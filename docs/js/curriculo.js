@@ -140,7 +140,10 @@ const translations = {
     'chatbot-curriculo-pt-BR': 'Chatbot do Currículo',
     'chatbot-curriculo-en': 'Resume Chatbot',
     'enviar-pt-BR': 'Enviar',
-    'enviar-en': 'Send'
+    'enviar-en': 'Send',
+    'experience-job0-title-pt-BR': 'Projetista II | Soluções em Iluminação Pública e Eficiência Energética',
+    'experience-job0-title-en': 'Designer II | Public Lighting and Energy Efficiency Solutions',
+    'expperience-company0-pt-BR': 'Grupo Setup - Florianópolis, SC',
 
 };
 
