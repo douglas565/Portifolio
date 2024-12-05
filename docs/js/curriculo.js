@@ -142,9 +142,26 @@ const translations = {
     'enviar-pt-BR': 'Enviar',
     'enviar-en': 'Send',
     'experience-job0-title-pt-BR': 'Projetista II | Soluções em Iluminação Pública e Eficiência Energética',
-    'experience-job0-title-en': 'Designer II | Public Lighting and Energy Efficiency Solutions',
-    'expperience-company0-pt-BR': 'Grupo Setup - Florianópolis, SC',
-
+    'experience-job0-title-en': 'Engineer Designer II | Public Lighting and Energy Efficiency Solutions',
+    'experience-date0-pt-BR': 'Novembro de 2024 - Presente',
+    'experience-date0-en': 'November 2024 - Present',
+    'experience-description0-pt-BR': 'Atuo como Projetista II na ENGIE, uma líder global em transição energética, focada em soluções para descarbonização e otimização de energia.Nossa missão é desenvolver projetos sustentáveis que reduzem custos e emissões de CO2, transformando o modo como cidades e empresas gerenciam e consomem energia.',
+    'experience-description0-en': 'I work as a Designer II at ENGIE, a global leader in energy transition, focused on solutions for decarbonization and energy optimization. Our mission is to develop sustainable projects that reduce costs and CO2 emissions, transforming the way cities and companies manage and consume energy.',
+    'project-0-title-pt-BR': 'Minhas principais responsabilidades incluem:',
+    'project-0-title-en': 'My main responsibilities include:',
+    'project-0-des0-pt-BR': '-Projetos Luminotécnicos: Elaboração de projetos de iluminação pública e elétrica que atendem às normas vigentes, oferecendo o melhor custo-benefício para a ENGIE e seus clientes.',
+    'project-0-des0-en': '-Lighting Projects: Elaboration of public and electrical lighting projects that meet current standards, offering the best cost-benefit for ENGIE and its customers.',
+    'project-0-des1-pt-BR': '-Inovação e Sustentabilidade: Pesquisa e aplicação das melhores soluções de mercado para iluminações eficientes e sustentáveis, com constante atualização de práticas e tecnologia.',
+    'project-0-des1-en': '-Innovation and Sustainability: Research and application of the best market solutions for efficient and sustainable lighting, with constant updating of practices and technology.',
+    'project-0-des2-pt-BR': '-Suporte e Relacionamento: Assistência técnica e orientação às unidades operacionais e fornecedores para garantir o alinhamento e execução dos projetos de acordo com os padrões da ENGIE.',
+    'project-0-des2-en': '-Support and Relationship: Technical assistance and guidance to operational units and suppliers to ensure alignment and execution of projects according to ENGIE standards.',
+    'project-0-des3-pt-BR': '-Gestão e Orçamento: Desenvolvimento de orçamentos, controle de medições e acompanhamento de cadastros e pontos luminosos, assegurando qualidade e precisão.',
+    'project-0-des3-en': '-Management and Budget: Development of budgets, measurement control and monitoring of registrations and light points, ensuring quality and accuracy.',
+    'project-0-des4-pt-BR': '-Liderança Técnica: Atuação como orientador e facilitador para projetistas e fornecedores, promovendo o desenvolvimento da equipe e a otimização de atividades.',
+    'project-0-des4-en': '-Technical Leadership: Acting as a guide and facilitator for designers and suppliers, promoting team development and activity optimization.',
+    'project-0-dec5-pt-BR':'-Contribuo diretamente para a criação de soluções energéticas inteligentes que impactam positivamente os setores industrial, comercial e urbano, incluindo Iluminação Pública e Mobilidade Elétrica. A ENGIE e eu trabalhamos com um compromisso contínuo de construir uma sociedade mais sustentável e com menor pegada de carbono, sempre em parceria com gestores públicos, população e parceiros.',
+    'project-0-dec5-en':'-I contribute directly to the creation of intelligent energy solutions that positively impact the industrial, commercial and urban sectors, including Public Lighting and Electric Mobility. ENGIE and I work with a continuous commitment to build a more sustainable society with a lower carbon footprint, always in partnership with public managers, population and partners.',
+    
 };
 
 function changeLanguage(lang) {
@@ -222,12 +239,12 @@ function toggleProjectDetails(projectId) {
 
 
 darkModeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
+    body.classList.toggle('dark-mode');
 
-  // Salva a preferência no localStorage
-  if (body.classList.contains('dark-mode')) {
-    localStorage.setItem('darkMode', 'enabled');
-  } else {
-    localStorage.setItem('darkMode', 'disabled');
-  }
+    // Salva a preferência no localStorage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+    }
 });

@@ -487,56 +487,37 @@ a:hover {
 }
 
 
-.engie-logo {
-    width: 200px; /* ajuste conforme necessário */
-    height: 90px; /* ajuste conforme necessário */
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
+.company-logo-wrapper {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre o título e o logo */
+  }
+  
+  .company-logo-wrapper h3 {
+      margin: 0; /* Remove a margem padrão do h3 */
+      flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
+  }
+  
+  .setup-logo, .ufsm-logo, .unisul-logo {
+      max-width: 100px; /* Define uma largura máxima para os logos */
+      height: auto;     /* Mantém a proporção da imagem */
+      margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
+  }
 
+  .ctism-logo{
+    max-width: 200px; /* Define uma largura máxima para o logo */
+    height: auto;     /* Mantém a proporção da imagem */
+    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
 
+  }
+  .engie-logo{
+    max-width: 120px; /* Define uma largura máxima para o logo */
+    height: auto;     /* Mantém a proporção da imagem */
+    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
+  }
 
-.setup-logo {
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
-
-.base-aerea-logo {
-    width: 100px; /* ajuste conforme necessário */
-    height: 110px; /* ajuste conforme necessário */
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
-
-.ufsm-logo {
-    width: 100px; /* ajuste conforme necessário */
-    height: 100px; /* ajuste conforme necessário */
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
-
-.unisul-logo {
-    width: 100px; /* ajuste conforme necessário */
-    height: 50px; /* ajuste conforme necessário */
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
-
-.ctism-logo {
-    width: 200px; /* ajuste conforme necessário */
-    height: 100px; /* ajuste conforme necessário */
-    vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: auto; /* empurra o logo para a direita */
-    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
-    display: block;
-}
+  .base-aerea-logo {
+    max-width: 70px; /* Define uma largura máxima para o logo */
+    height: auto;     /* Mantém a proporção da imagem */
+    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
+  }
