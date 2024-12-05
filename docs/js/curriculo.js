@@ -145,8 +145,8 @@ const translations = {
     'experience-job0-title-en': 'Engineer Designer II | Public Lighting and Energy Efficiency Solutions',
     'experience-date0-pt-BR': 'Novembro de 2024 - Presente',
     'experience-date0-en': 'November 2024 - Present',
-    'experience-description0-pt-BR': 'Atuo como Projetista II na ENGIE, uma líder global em transição energética, focada em soluções para descarbonização e otimização de energia.Nossa missão é desenvolver projetos sustentáveis que reduzem custos e emissões de CO2, transformando o modo como cidades e empresas gerenciam e consomem energia.',
-    'experience-description0-en': 'I work as a Designer II at ENGIE, a global leader in energy transition, focused on solutions for decarbonization and energy optimization. Our mission is to develop sustainable projects that reduce costs and CO2 emissions, transforming the way cities and companies manage and consume energy.',
+    'experience-description-0-pt-BR': 'Atuo como Projetista II na ENGIE, uma líder global em transição energética, focada em soluções para descarbonização e otimização de energia.Nossa missão é desenvolver projetos sustentáveis que reduzem custos e emissões de CO2, transformando o modo como cidades e empresas gerenciam e consomem energia.',
+    'experience-description-0-en': 'I work as a Designer II at ENGIE, a global leader in energy transition, focused on solutions for decarbonization and energy optimization. Our mission is to develop sustainable projects that reduce costs and CO2 emissions, transforming the way cities and companies manage and consume energy.',
     'project-0-title-pt-BR': 'Minhas principais responsabilidades incluem:',
     'project-0-title-en': 'My main responsibilities include:',
     'project-0-des0-pt-BR': '-Projetos Luminotécnicos: Elaboração de projetos de iluminação pública e elétrica que atendem às normas vigentes, oferecendo o melhor custo-benefício para a ENGIE e seus clientes.',
@@ -159,9 +159,9 @@ const translations = {
     'project-0-des3-en': '-Management and Budget: Development of budgets, measurement control and monitoring of registrations and light points, ensuring quality and accuracy.',
     'project-0-des4-pt-BR': '-Liderança Técnica: Atuação como orientador e facilitador para projetistas e fornecedores, promovendo o desenvolvimento da equipe e a otimização de atividades.',
     'project-0-des4-en': '-Technical Leadership: Acting as a guide and facilitator for designers and suppliers, promoting team development and activity optimization.',
-    'project-0-dec5-pt-BR':'-Contribuo diretamente para a criação de soluções energéticas inteligentes que impactam positivamente os setores industrial, comercial e urbano, incluindo Iluminação Pública e Mobilidade Elétrica. A ENGIE e eu trabalhamos com um compromisso contínuo de construir uma sociedade mais sustentável e com menor pegada de carbono, sempre em parceria com gestores públicos, população e parceiros.',
-    'project-0-dec5-en':'-I contribute directly to the creation of intelligent energy solutions that positively impact the industrial, commercial and urban sectors, including Public Lighting and Electric Mobility. ENGIE and I work with a continuous commitment to build a more sustainable society with a lower carbon footprint, always in partnership with public managers, population and partners.',
-    
+    'project-0-des5-pt-BR':'-Contribuo diretamente para a criação de soluções energéticas inteligentes que impactam positivamente os setores industrial, comercial e urbano, incluindo Iluminação Pública e Mobilidade Elétrica. A ENGIE e eu trabalhamos com um compromisso contínuo de construir uma sociedade mais sustentável e com menor pegada de carbono, sempre em parceria com gestores públicos, população e parceiros.',
+    'project-0-des5-en':'-I contribute directly to the creation of intelligent energy solutions that positively impact the industrial, commercial and urban sectors, including Public Lighting and Electric Mobility. ENGIE and I work with a continuous commitment to build a more sustainable society with a lower carbon footprint, always in partnership with public managers, population and partners.',
+
 };
 
 function changeLanguage(lang) {
