@@ -140,7 +140,9 @@ a:hover {
 /* Estilos para a seção de perfil */
 .profile {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente (opcional) */
     margin-bottom: 20px;
 }
 
