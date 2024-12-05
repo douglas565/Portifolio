@@ -523,3 +523,20 @@ a:hover {
     height: auto;     /* Mantém a proporção da imagem */
     margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
   }
+
+  @media (max-width: 768px) { /* Ajuste o breakpoint se necessário */
+    .info {
+      flex-direction: column; /* Empilha os itens verticalmente */
+      align-items: center; /* Centraliza horizontalmente */
+    }
+  
+    .info-item {
+      width: 100%; /* Ocupa toda a largura disponível */
+      text-align: center; /* Centraliza o texto dentro de cada item */
+      margin-bottom: 10px; /* Adiciona espaçamento entre os itens */
+    }
+  
+    .quick-links {
+      justify-content: center; /* Centraliza os links horizontalmente */
+    }
+  }
