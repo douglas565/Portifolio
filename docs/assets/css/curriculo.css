@@ -488,11 +488,55 @@ a:hover {
 
 
 .engie-logo {
-    width: 20px; /* ajuste conforme necessário */
-    height: 20px; /* ajuste conforme necessário */
+    width: 200px; /* ajuste conforme necessário */
+    height: 90px; /* ajuste conforme necessário */
     vertical-align: middle; /* alinha verticalmente com o texto */
-    margin-left: 5px; /* adiciona um pequeno espaço entre o texto e a imagem */
-  }
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
 
 
 
+.setup-logo {
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
+
+.base-aerea-logo {
+    width: 100px; /* ajuste conforme necessário */
+    height: 110px; /* ajuste conforme necessário */
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
+
+.ufsm-logo {
+    width: 100px; /* ajuste conforme necessário */
+    height: 100px; /* ajuste conforme necessário */
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
+
+.unisul-logo {
+    width: 100px; /* ajuste conforme necessário */
+    height: 50px; /* ajuste conforme necessário */
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
+
+.ctism-logo {
+    width: 200px; /* ajuste conforme necessário */
+    height: 100px; /* ajuste conforme necessário */
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: auto; /* empurra o logo para a direita */
+    margin-right: 20px; /* adiciona um pequeno espaço à direita da imagem */
+    display: block;
+}
