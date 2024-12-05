@@ -487,7 +487,12 @@ a:hover {
 }
 
 
-
+.engie-logo {
+    width: 20px; /* ajuste conforme necessário */
+    height: 20px; /* ajuste conforme necessário */
+    vertical-align: middle; /* alinha verticalmente com o texto */
+    margin-left: 5px; /* adiciona um pequeno espaço entre o texto e a imagem */
+  }
 
 
 
