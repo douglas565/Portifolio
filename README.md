@@ -19,6 +19,7 @@ Este portfólio foi criado com o objetivo de:
 
 ## 📁 Estrutura do Projeto
 
+```
 Portifolio/
 ├── index.html
 ├── css/
@@ -28,6 +29,8 @@ Portifolio/
 ├── images/
 │ └── [imagens do projeto]
 └── README.md
+
+```
 
 ## 📷 Demonstração
 
