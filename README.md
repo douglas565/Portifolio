@@ -29,10 +29,6 @@ Portifolio/
 │ └── [imagens do projeto]
 └── README.md
 
-less
-Copiar
-Editar
-
 ## 📷 Demonstração
 
 *Adicione aqui um screenshot ou gif do seu portfólio se desejar*
