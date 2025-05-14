@@ -32,16 +32,6 @@ Portifolio/
 
 ```
 
-## 📷 Demonstração
-
-*Adicione aqui um screenshot ou gif do seu portfólio se desejar*
-
-## 📫 Contato
-
-- **Email**: [Ghgghgc60@gmail.com](mailto:seu.email@example.com)
-- **LinkedIn**: [Douglas Ramos]([https://www.linkedin.com/in/seu-perfil](https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293/))
-- **GitHub**: [github.com/douglas565](https://github.com/douglas565)
-
 ## 📄 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
