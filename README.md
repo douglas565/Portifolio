@@ -39,7 +39,7 @@ Portifolio/
 ## 📫 Contato
 
 - **Email**: [Ghgghgc60@gmail.com](mailto:seu.email@example.com)
-- **LinkedIn**: [linkedin.com/in/Douglas Ramos Charqueiro]([https://www.linkedin.com/in/seu-perfil](https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293/))
+- **LinkedIn**: [Douglas Ramos]([https://www.linkedin.com/in/seu-perfil](https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293/))
 - **GitHub**: [github.com/douglas565](https://github.com/douglas565)
 
 ## 📄 Licença
