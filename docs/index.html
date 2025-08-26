@@ -27,8 +27,23 @@
                 <a class="link color-yellow" href="space.html" title="My Projects">My Projects</a>
                 <a class="link color-green" href="cert.html" title="My Certificates">My Certificates</a>
                 <a class="link color-red" href="curriculo.html" title="Resume">My Curriculum</a>
+                <a class="link color-yellow" href="javascript:openChat()" title="Chat with AI">💬 Chat com IA</a>
               </div>
             </main>
+            
+              <div id="chat-widget">
+                  <button id="chat-toggle" class="pulse" title="Converse comigo através da IA!">
+                      🤖
+                  </button>
+              </div>
+
+  
+              <div id="chat-modal">
+                  <div id="chat-container">
+                      <button id="chat-close" onclick="closeChat()" title="Fechar Chat">×</button>
+                      <iframe id="chat-iframe" src=""></iframe>
+                  </div>
+              </div>
             <footer>
               <div class="links"><a class="link small alt" href="https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="Linkedin" target="_blank">Linkedin</a><a class="link small alt" href="https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=white&color=%237289DA&label=&message=Grots" title="Discord" target="_blank">Discord</a> <a class="link small alt" href="https://github.com/douglas565" title="GitHub (@Groot)" target="_blank">GitHub</a></div>
             </footer>

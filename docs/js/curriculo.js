@@ -205,7 +205,7 @@ function changeLanguage(lang) {
 }
 
 
-// ... (resto do seu código) ... 
+
 function toggleChatbox() {
     const chatbotContent = document.getElementById('chatbot-content');
     const icon = document.querySelector('.chatbot-header button i');
@@ -243,7 +243,6 @@ function toggleProjectDetails(projectId) {
 darkModeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
 
-    // Salva a preferência no localStorage
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
     } else {

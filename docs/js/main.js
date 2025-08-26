@@ -649,4 +649,80 @@ function loadProject() {
   });
 };
 
+const CHATBOT_URL = 'http://SEU-SERVIDOR-UMBREL:5000';
+        
+        function openChat() {
+            const modal = document.getElementById('chat-modal');
+            const iframe = document.getElementById('chat-iframe');
+            
+            // Carregar o iframe apenas quando necessário (performance)
+            if (!iframe.src) {
+                iframe.src = CHATBOT_URL;
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevenir scroll do body
+            
+            // Remover animação de pulso após primeiro clique
+            document.getElementById('chat-toggle').classList.remove('pulse');
+        }
+
+        function closeChat() {
+            const modal = document.getElementById('chat-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll do body
+        }
+
+        // Event listeners
+        document.getElementById('chat-toggle').onclick = openChat;
+        
+        // Fechar modal clicando fora dele
+        document.getElementById('chat-modal').onclick = function(e) {
+            if (e.target === this) {
+                closeChat();
+            }
+        };
+        
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('chat-modal').style.display === 'block') {
+                closeChat();
+            }
+        });
+
+        // Mostrar notificação de boas-vindas após alguns segundos
+        setTimeout(function() {
+            if (localStorage.getItem('chat_welcomed') !== 'true') {
+                const toggle = document.getElementById('chat-toggle');
+                
+                // Criar tooltip temporário
+                const tooltip = document.createElement('div');
+                tooltip.innerHTML = '💬 Oi! Clique aqui para conversar comigo!';
+                tooltip.style.cssText = `
+                    position: absolute;
+                    bottom: 80px;
+                    right: 0;
+                    background: #333;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 15px;
+                    font-size: 14px;
+                    white-space: nowrap;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                    animation: fadeInUp 0.5s ease-out;
+                `;
+                
+                document.getElementById('chat-widget').appendChild(tooltip);
+                
+                // Remover tooltip após 5 segundos
+                setTimeout(() => {
+                    if (tooltip.parentNode) {
+                        tooltip.remove();
+                    }
+                    localStorage.setItem('chat_welcomed', 'true');
+                }, 5000);
+            }
+        }, 3000);
+    
+
 loadProject();
