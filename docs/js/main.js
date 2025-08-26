@@ -649,7 +649,7 @@ function loadProject() {
   });
 };
 
-const CHATBOT_URL = 'http://SEU-SERVIDOR-UMBREL:5000';
+const CHATBOT_URL = 'http://192.168.0.25:5000';
         
         function openChat() {
             const modal = document.getElementById('chat-modal');
