@@ -693,16 +693,18 @@ function openChat() {
         return;
     }
 
-    const modal = document.getElementById('chat-modal');
-    const iframe = document.getElementById('chat-iframe');
+    // Tentar abrir em nova aba primeiro
+    const newWindow = window.open(CHATBOT_URL, 'chatbot', 'width=900,height=700,scrollbars=yes,resizable=yes');
     
-    if (!iframe.src) {
-        iframe.src = CHATBOT_URL;
+    // Se não conseguir (popup bloqueado), mostrar link
+    if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+        const userChoice = confirm('Popup bloqueado! Clique OK para abrir o chatbot em uma nova aba.');
+        if (userChoice) {
+            window.open(CHATBOT_URL, '_blank');
+        }
     }
-    
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
 }
+
 
 function closeChat() {
     const modal = document.getElementById('chat-modal');
