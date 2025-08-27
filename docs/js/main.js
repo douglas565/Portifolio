@@ -649,80 +649,94 @@ function loadProject() {
   });
 };
 
-const CHATBOT_URL = 'http://192.168.0.25:5000';
-        
-        function openChat() {
-            const modal = document.getElementById('chat-modal');
-            const iframe = document.getElementById('chat-iframe');
-            
-            // Carregar o iframe apenas quando necessário (performance)
-            if (!iframe.src) {
-                iframe.src = CHATBOT_URL;
-            }
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevenir scroll do body
-            
-            // Remover animação de pulso após primeiro clique
-            document.getElementById('chat-toggle').classList.remove('pulse');
-        }
+// ========== CHATBOT IA LOCAL - INÍCIO ==========
+// Configuração - SUBSTITUA pelo IP do seu servidor umbrelOS
+const CHATBOT_URL = 'http://192.168.0.25:5000'; // ← MUDE PARA SEU IP!
 
-        function closeChat() {
-            const modal = document.getElementById('chat-modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaurar scroll do body
-        }
+let isOnline = false;
 
-        // Event listeners
-        document.getElementById('chat-toggle').onclick = openChat;
+async function checkChatbotHealth( ) {
+    try {
+        const response = await fetch(`${CHATBOT_URL}/api/health`, {
+            method: 'GET',
+            mode: 'cors'
+        });
         
-        // Fechar modal clicando fora dele
-        document.getElementById('chat-modal').onclick = function(e) {
+        if (response.ok) {
+            const data = await response.json();
+            isOnline = data.ollama_status === 'connected';
+        } else {
+            isOnline = false;
+        }
+    } catch (error) {
+        isOnline = false;
+    }
+    
+    updateChatStatus();
+}
+
+function updateChatStatus() {
+    const toggle = document.getElementById('chat-toggle');
+    
+    if (isOnline) {
+        toggle.classList.remove('offline');
+        toggle.title = 'IA Local Online - Clique para conversar!';
+    } else {
+        toggle.classList.add('offline');
+        toggle.title = 'IA Local Offline - Verifique o servidor';
+    }
+}
+
+function openChat() {
+    if (!isOnline) {
+        alert('🔴 IA Local está offline. Verifique se o servidor está rodando.');
+        return;
+    }
+
+    const modal = document.getElementById('chat-modal');
+    const iframe = document.getElementById('chat-iframe');
+    
+    if (!iframe.src) {
+        iframe.src = CHATBOT_URL;
+    }
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeChat() {
+    const modal = document.getElementById('chat-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    const chatToggle = document.getElementById('chat-toggle');
+    if (chatToggle) {
+        chatToggle.onclick = openChat;
+    }
+
+    const chatModal = document.getElementById('chat-modal');
+    if (chatModal) {
+        chatModal.onclick = function(e) {
             if (e.target === this) {
                 closeChat();
             }
         };
-        
-        // Fechar modal com tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('chat-modal').style.display === 'block') {
-                closeChat();
-            }
-        });
+    }
 
-        // Mostrar notificação de boas-vindas após alguns segundos
-        setTimeout(function() {
-            if (localStorage.getItem('chat_welcomed') !== 'true') {
-                const toggle = document.getElementById('chat-toggle');
-                
-                // Criar tooltip temporário
-                const tooltip = document.createElement('div');
-                tooltip.innerHTML = '💬 Oi! Clique aqui para conversar comigo!';
-                tooltip.style.cssText = `
-                    position: absolute;
-                    bottom: 80px;
-                    right: 0;
-                    background: #333;
-                    color: white;
-                    padding: 10px 15px;
-                    border-radius: 15px;
-                    font-size: 14px;
-                    white-space: nowrap;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                    animation: fadeInUp 0.5s ease-out;
-                `;
-                
-                document.getElementById('chat-widget').appendChild(tooltip);
-                
-                // Remover tooltip após 5 segundos
-                setTimeout(() => {
-                    if (tooltip.parentNode) {
-                        tooltip.remove();
-                    }
-                    localStorage.setItem('chat_welcomed', 'true');
-                }, 5000);
-            }
-        }, 3000);
-    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.getElementById('chat-modal').style.display === 'block') {
+            closeChat();
+        }
+    });
+
+    // Verificar status inicial e periodicamente
+    checkChatbotHealth();
+    setInterval(checkChatbotHealth, 30000);
+});
+// ========== CHATBOT IA LOCAL - FIM ==========
+
 
 loadProject();
