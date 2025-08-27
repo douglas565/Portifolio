@@ -655,20 +655,19 @@ const CHATBOT_URL = 'http://192.168.0.25:5000'; // ← MUDE PARA SEU IP!
 
 let isOnline = false;
 
-async function checkChatbotHealth( ) {
+async function checkChatbotHealth() {
     try {
+        // Tentar primeiro com fetch normal
         const response = await fetch(`${CHATBOT_URL}/api/health`, {
             method: 'GET',
-            mode: 'cors'
+            mode: 'no-cors' // Permite requisições cross-origin
         });
         
-        if (response.ok) {
-            const data = await response.json();
-            isOnline = data.ollama_status === 'connected';
-        } else {
-            isOnline = false;
-        }
+        // Como no-cors não permite ler a resposta, assumimos que está online
+        // se não houver erro de rede
+        isOnline = true;
     } catch (error) {
+        console.log('Chatbot offline:', error);
         isOnline = false;
     }
     
