@@ -651,23 +651,24 @@ function loadProject() {
 
 // ========== CHATBOT IA LOCAL - INÍCIO ==========
 // Configuração - SUBSTITUA pelo IP do seu servidor umbrelOS
-const CHATBOT_URL = 'http://192.168.0.25:5000'; // ← MUDE PARA SEU IP!
+const CHATBOT_URL = 'https://192.168.0.25:5000'; // ← MUDE PARA SEU IP!
 
 let isOnline = false;
 
-async function checkChatbotHealth() {
+async function checkChatbotHealth( ) {
     try {
-        // Tentar primeiro com fetch normal
         const response = await fetch(`${CHATBOT_URL}/api/health`, {
             method: 'GET',
-            mode: 'no-cors' // Permite requisições cross-origin
+            mode: 'cors'
         });
         
-        // Como no-cors não permite ler a resposta, assumimos que está online
-        // se não houver erro de rede
-        isOnline = true;
+        if (response.ok) {
+            const data = await response.json();
+            isOnline = data.ollama_status === 'connected';
+        } else {
+            isOnline = false;
+        }
     } catch (error) {
-        console.log('Chatbot offline:', error);
         isOnline = false;
     }
     
@@ -692,18 +693,16 @@ function openChat() {
         return;
     }
 
-    // Tentar abrir em nova aba primeiro
-    const newWindow = window.open(CHATBOT_URL, 'chatbot', 'width=900,height=700,scrollbars=yes,resizable=yes');
+    const modal = document.getElementById('chat-modal');
+    const iframe = document.getElementById('chat-iframe');
     
-    // Se não conseguir (popup bloqueado), mostrar link
-    if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-        const userChoice = confirm('Popup bloqueado! Clique OK para abrir o chatbot em uma nova aba.');
-        if (userChoice) {
-            window.open(CHATBOT_URL, '_blank');
-        }
+    if (!iframe.src) {
+        iframe.src = CHATBOT_URL;
     }
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
-
 
 function closeChat() {
     const modal = document.getElementById('chat-modal');
