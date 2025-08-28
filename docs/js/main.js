@@ -651,7 +651,7 @@ function loadProject() {
 
 // ========== CHATBOT IA LOCAL - INÍCIO ==========
 // Configuração - SUBSTITUA pelo IP do seu servidor umbrelOS
-const CHATBOT_URL = 'https://falbddcf45c3.ngrok-free.app'; // ← MUDE PARA SEU IP!
+const CHATBOT_URL = 'https://afa74e8287de.ngrok-free.app'; 
 
 let isOnline = false;
 
