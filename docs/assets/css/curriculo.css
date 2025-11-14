@@ -1,542 +1,386 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f4f4f4;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
+    background-color: var(--secondary-color);
     color: var(--text-color);
     line-height: 1.6;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+}
+
+/* --- Header e Informações de Contato --- */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+    flex-wrap: wrap; /* Responsividade */
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 25px;
+    border: 4px solid var(--primary-color);
+    flex-shrink: 0; /* Não encolhe */
+}
+
+.header-content {
+    flex-grow: 1;
+    min-width: 200px; /* Garante espaço mínimo */
 }
 
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: #007bff;
-    text-align: center;
-}
-
-h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.info-item {
-    width: 48%;
-}
-
-.info-item p {
+    font-size: 2.2em;
     margin-bottom: 5px;
+    color: var(--primary-color);
 }
 
+.contact-info p {
+    margin: 3px 0;
+    font-size: 0.95em;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.quick-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.link-item:hover {
+    color: #0056b3;
+}
+
+.link-item i {
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+/* --- Seções Gerais --- */
 .section {
     margin-bottom: 30px;
+    padding: 15px;
+    border-left: 5px solid var(--primary-color);
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
 
 .section-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #007bff;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
 }
 
+.section-title i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* --- Experiência e Educação --- */
 .experience-item,
 .education-item {
-    margin-bottom: 15px;
-    padding: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    transition: box-shadow 0.3s;
 }
 
-.experience-item h3,
-.education-item h3 {
-    margin-bottom: 5px;
+.experience-item:hover,
+.education-item:hover {
+    box-shadow: var(--shadow-light);
+}
+
+.company-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.company-logo-wrapper h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text-color);
     font-weight: bold;
-    color: #007bff;
+}
+
+.company-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-left: 15px;
 }
 
 .experience-item p,
 .education-item p {
-    margin: 0;
+    margin: 2px 0;
+    font-size: 0.9em;
+    color: #666;
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #e9e9e9;
-    color: #333;
-    font-weight: bold;
-}
-
-ul {
+.job-description {
     list-style: disc;
     margin-left: 20px;
-}
-
-li {
-    margin-bottom: 5px;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.language-buttons {
-    position: fixed;
-    display: flex;
-    justify-content: flex-end;
-    /* Alinha os botões à direita */
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.language-buttons button {
-   
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-.language-buttons img {
-    width: 30px;
-    height: 20px;
-}
-
-/* Estilos para a seção de perfil */
-.profile {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente (opcional) */
-    margin-bottom: 20px;
-}
-
-.profile-picture {
-    width: 150px;
-    /* Ajuste o tamanho da foto */
-    height: 150px;
-    /* Ajuste o tamanho da foto */
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-/* Estilos para os links de redes sociais */
-.info-item a {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.info-item img {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-}
-
-/* Estilos para a caixa do chatbot */
-.chatbot-box {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.chatbot-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.chatbot-header h3 {
-    margin: 0;
-    font-weight: bold;
-}
-
-.chatbot-header button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.chatbot-header button i {
-    font-size: 1.2em;
-}
-
-.chatbot-content {
-    display: none;
-    /* Oculta a caixa de chat inicialmente */
-}
-
-.chatbot-messages {
-    max-height: 200px;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.chat-message {
-    margin-bottom: 5px;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.user {
-    background-color: #e9e9e9;
-    text-align: right;
-}
-
-.chatbot {
-    background-color: #e0f2f7;
-    text-align: left;
-}
-
-#chatbot-input {
-    width: calc(100% - 90px);
-    /* Ajusta a largura do input */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding-left: 0;
     margin-top: 10px;
 }
 
-#chatbot-input::placeholder {
-    color: #999;
+.job-description li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
 }
 
-#chatbot-input:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-#enviar {
-    width: 80px;
-    /* Ajusta a largura do botão */
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-left: 10px;
-    /* Adiciona um espaço à esquerda do botão */
-}
-
-#enviar:hover {
-    opacity: 0.8;
-}
-
-/* Estilos para a seção de projetos */
-#projects-section {
-    margin-bottom: 30px;
-}
-
+/* Detalhes do Projeto (Responsabilidades) */
 .project {
-    margin-bottom: 20px;
+    margin-top: 15px;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-top: 1px dashed #ccc;
 }
 
-.project h3 {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #007bff;
+.project h4 {
+    font-size: 1em;
+    margin: 0;
+    display: inline-block;
+}
+
+.details-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+    transition: transform 0.3s;
 }
 
 .project-details {
     margin-top: 10px;
     display: none;
+    padding-left: 15px;
+    border-left: 2px solid #ccc;
 }
 
-.project-details p {
-    margin-bottom: 5px;
-}
-
-.project-details a {
+.project-details p span {
     display: block;
-    margin-top: 5px;
-    color: #007bff;
-    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 0.9em;
 }
 
-.project-details a:hover {
-    text-decoration: underline;
-}
-
-.project-details img {
-    width: 100%;
-    max-height: 200px;
-    margin-top: 10px;
-    object-fit: cover;
-}
-
-.quick-links {
+/* --- Habilidades --- */
+.skills-container {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-category {
+    flex: 1 1 250px; /* Flexível e com largura base */
+    background-color: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.skill-category h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
     margin-bottom: 10px;
 }
 
-.quick-links a {
+.skills {
     display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #007bff;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.quick-links img {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-}
-
-#project-2-details img {
-    object-fit: contain;
-    width: 100%;
-    /* Imagem ocupa 100% da largura do container */
-    max-width: 500px;
-    /* Largura máxima da imagem */
-    height: auto;
-    /* Ajusta altura automaticamente */
-}
-
-
-
-/* Estilos do Formulário de Contato */
-#contato form {
-    max-width: 300px;
-    /* Largura máxima do formulário */
-    margin: 30px auto;
-    /* Centraliza o formulário */
-    padding: 20px;
-    border: 1px solid #dddddd;
+.skill {
+    padding: 5px 10px;
     border-radius: 5px;
-}
-
-#contato label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;
-    /* Alinhamento à esquerda */
-}
-
-#contato input[type="text"],
-#contato input[type="email"],
-#contato textarea {
-    width: 100%;
-    padding: 10px;
-    /* Aumenta o padding dos inputs */
-    margin-bottom: 15px;
-    /* Margem inferior para espaçamento */
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    /* Bordas arredondadas */
-    box-sizing: border-box;
-}
-
-#contato input[type="text"]:focus,
-#contato input[type="email"]:focus,
-#contato textarea:focus {
-    outline: none;
-    border-color: #007bff;
-    /* Cor de destaque no foco */
-}
-
-#contato textarea {
-    height: 120px;
-    /* Altura da área de texto */
-}
-
-/* Botão de Envio */
-#contato button[type="submit"] {
-    background-color: #007bff;
-    /* Cor de fundo do botão */
+    background-color: var(--primary-color);
     color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 3px;
-    /* Bordas arredondadas */
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* --- Projetos e Pesquisa --- */
+.project-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 3px solid var(--primary-color);
+    background-color: #f9f9f9;
+}
+
+.project-item h3 {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.project-item p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+/* --- Botões de Idioma --- */
+.language-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.language-buttons button {
+    background: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
     cursor: pointer;
+    padding: 5px;
+    transition: background-color 0.3s;
 }
 
-#contato button[type="submit"]:hover {
-    background-color: #0056b3;
-    /* Cor de fundo no hover */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    /* Sombra no hover */
+.language-buttons button:hover {
+    background-color: var(--primary-color);
 }
 
-/* Estilos para telas maiores (desktops) */
-@media (min-width: 768px) {
-    nav ul li {
-        display: inline;
-        margin: 0 1rem;
-    }
-
-    .projects {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .project {
-        width: 48%;
-        margin-bottom: 20px;
-    }
+.language-buttons img {
+    width: 25px;
+    height: auto;
+    display: block;
 }
 
-/* Estilos para tablets */
-@media (max-width: 768px) {
-    nav ul li {
-        display: block;
-        /* Empilha itens do menu */
-        margin: 10px 0;
-    }
-
-    .project {
-        width: 100%;
-        /* Projetos ocupam 100% da largura */
-        margin-bottom: 20px;
-    }
-}
-
-/* Estilos para celulares */
-@media (max-width: 480px) {
-    .project-details {
-        font-size: 14px;
-        /* Diminui o tamanho da fonte */
-    }
-}
-
-:root {
-    --background-color: #f4f4f4;
-    /* Cor de fundo padrão (modo claro) */
-    --text-color: #333;
-    /* Cor do texto padrão (modo claro) */
-    --primary-color: #007bff;
-    /* Cor primária do site */
-}
-
-.dark-mode {
-    --background-color: #333;
-    /* Cor de fundo no modo escuro */
-    --text-color: #fff;
-    /* Cor do texto no modo escuro */
-}
-
-
-.back-button {  /* Estilos iguais ao download-button */
+/* --- Botão Voltar --- */
+.back-button {
     position: fixed;
     bottom: 20px;
-    left: 20px;  /* Posicionado à esquerda */
-    padding: 12px 24px;
-    background-color: #2196F3; /* Azul vibrante */
+    left: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 5px;
     z-index: 20;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: var(--shadow-light);
 }
 
 .back-button:hover {
-    background-color: #1976D2; /* Azul mais escuro */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    background-color: #0056b3;
+    box-shadow: var(--shadow-hover);
 }
 
-.back-button:active {
-    background-color: #1565C0; /* Azul ainda mais escuro */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    transform: translateY(0);
-}
-
-
-.company-logo-wrapper {
-    display: flex;
-    align-items: center; /* Alinha verticalmente */
-    justify-content: space-between; /* Distribui o espaço entre o título e o logo */
-  }
-  
-  .company-logo-wrapper h3 {
-      margin: 0; /* Remove a margem padrão do h3 */
-      flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
-  }
-  
-  .setup-logo, .ufsm-logo, .unisul-logo {
-      max-width: 100px; /* Define uma largura máxima para os logos */
-      height: auto;     /* Mantém a proporção da imagem */
-      margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
-  }
-
-  .ctism-logo{
-    max-width: 200px; /* Define uma largura máxima para o logo */
-    height: auto;     /* Mantém a proporção da imagem */
-    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
-
-  }
-  .engie-logo{
-    max-width: 120px; /* Define uma largura máxima para o logo */
-    height: auto;     /* Mantém a proporção da imagem */
-    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
-  }
-
-  .base-aerea-logo {
-    max-width: 70px; /* Define uma largura máxima para o logo */
-    height: auto;     /* Mantém a proporção da imagem */
-    margin-left: 20px; /* Adiciona espaço entre o texto e o logo */
-  }
-
-  @media (max-width: 768px) { /* Ajuste o breakpoint se necessário */
-    .info {
-      flex-direction: column; /* Empilha os itens verticalmente */
-      align-items: center; /* Centraliza horizontalmente */
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
     }
-  
-    .info-item {
-      width: 100%; /* Ocupa toda a largura disponível */
-      text-align: center; /* Centraliza o texto dentro de cada item */
-      margin-bottom: 10px; /* Adiciona espaçamento entre os itens */
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
     }
-  
+
+    .profile-picture {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .contact-info, .quick-links {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
     .quick-links {
-      justify-content: center; /* Centraliza os links horizontalmente */
+        flex-direction: row;
+        gap: 15px;
     }
-  }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .section-title {
+        font-size: 1.4em;
+    }
+
+    .skills-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .skill-category {
+        flex: 1 1 100%;
+    }
+
+    .language-buttons {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .section-title {
+        font-size: 1.2em;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
