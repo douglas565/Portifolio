@@ -828,7 +828,7 @@ async function handleChat() {
         }
     } catch (error) {
         console.error("Erro detalhado:", error);
-        textSpan.innerHTML = "<em>Falha na conexão. Verifique o console.</em>";
+        textSpan.innerHTML = "<em>Servidor desligado, por fins de Infraestrutura se encontra em suspenso.</em>";
     }
 }
 
