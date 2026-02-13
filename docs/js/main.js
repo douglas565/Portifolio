@@ -659,27 +659,36 @@ async function falarComOllama(pergunta) {
     try {
         const response = await fetch(NGROK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                // ESTA LINHA ABAIXO É A CHAVE PARA O ERRO 403
+                'ngrok-skip-browser-warning': 'true' 
+            },
             body: JSON.stringify({
-                model: "llama3", // Verifique se é este o modelo no seu Ollama
+                model: "llama3",
                 messages: [
                     { 
                         role: "system", 
-                        content: "Você é o Douglas Virtual, assistente do portfólio do Douglas. Ele estuda Engenharia Elétrica na UFSM e é Técnico em Eletrotécnica. Responda de forma profissional e curta." 
+                        content: "Você é o Douglas Virtual, assistente do Douglas. Responda de forma profissional e curta." 
                     },
                     { role: "user", content: pergunta }
                 ],
                 stream: false
             })
         });
+
+        // Se o status for 403, o problema ainda é a permissão do ngrok
+        if (response.status === 403) {
+            return "Erro 403: Acesso negado. Certifique-se de que clicou em 'Visit Site' no link do ngrok.";
+        }
+
         const data = await response.json();
         return data.message.content;
     } catch (error) {
-        console.error("Erro:", error);
-        return "No momento meu servidor local está offline. O Douglas precisa ligar o computador!";
+        console.error("Erro detalhado:", error);
+        return "Erro de conexão. Verifique o console (F12) para mais detalhes.";
     }
 }
-
 // 3. Funções de Controle da Interface (Modal)
 function openChat() {
     const modal = document.getElementById('chat-modal');
