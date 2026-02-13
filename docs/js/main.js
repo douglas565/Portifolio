@@ -661,8 +661,6 @@ async function falarComOllama(pergunta) {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                // ESTA LINHA ABAIXO É A CHAVE PARA O ERRO 403
-                'ngrok-skip-browser-warning': 'true' 
             },
             body: JSON.stringify({
                 model: "llama3",
