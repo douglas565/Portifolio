@@ -649,48 +649,19 @@ function loadProject() {
   });
 };
 
-// ========== CHATBOT IA LOCAL - OLLAMA + NGROK ==========
+/* --- CONFIGURAÇÃO IA LOCAL (OLLAMA + NGROK) --- */
 
-// 1. SUA URL DO NGROK (Copie do terminal e cole aqui)
+// Certifique-se de que a URL termina em /api/chat e não tem espaços
 const NGROK_URL = "https://federally-uniparous-carlota.ngrok-free.dev/api/chat";
 
-// 2. Função de comunicação com o seu PC
-async function falarComOllama(pergunta) {
-    try {
-        const response = await fetch(NGROK_URL, {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: "llama3",
-                messages: [
-                    { 
-                        role: "system", 
-                        content: "Você é o Douglas Virtual, assistente do Douglas. Responda de forma profissional e curta." 
-                    },
-                    { role: "user", content: pergunta }
-                ],
-                stream: false
-            })
-        });
-
-        // Se o status for 403, o problema ainda é a permissão do ngrok
-        if (response.status === 403) {
-            return "Erro 403: Acesso negado. Certifique-se de que clicou em 'Visit Site' no link do ngrok.";
-        }
-
-        const data = await response.json();
-        return data.message.content;
-    } catch (error) {
-        console.error("Erro detalhado:", error);
-        return "Erro de conexão. Verifique o console (F12) para mais detalhes.";
-    }
-}
-// 3. Funções de Controle da Interface (Modal)
+// 1. Funções de Controle da Interface (Modal)
 function openChat() {
     const modal = document.getElementById('chat-modal');
-    if(modal) modal.style.display = 'block';
+    if(modal) {
+        modal.style.display = 'block';
+        // Foca no input automaticamente ao abrir
+        setTimeout(() => document.getElementById('chat-input').focus(), 100);
+    }
 }
 
 function closeChat() {
@@ -698,7 +669,7 @@ function closeChat() {
     if(modal) modal.style.display = 'none';
 }
 
-// 4. Lógica de Envio e Exibição de Mensagens
+// 2. Lógica de Envio e Streaming (IA escrevendo em tempo real)
 async function handleChat() {
     const input = document.getElementById('chat-input');
     const content = document.getElementById('chat-content');
@@ -706,47 +677,90 @@ async function handleChat() {
 
     if (!text) return;
 
-    // Adiciona sua mensagem na tela
+    // Mensagem do Usuário
     content.innerHTML += `<div class="message user"><strong>Você:</strong> ${text}</div>`;
     input.value = "";
     content.scrollTop = content.scrollHeight;
 
-    // Cria um ID temporário para a resposta da IA (efeito de carregamento)
-    const tempId = "loading-" + Date.now();
-    content.innerHTML += `<div class="message ai" id="${tempId}"><em>Digitando...</em></div>`;
+    // Balão da IA
+    const aiMsgDiv = document.createElement('div');
+    aiMsgDiv.className = 'message ai';
+    aiMsgDiv.innerHTML = `<strong>Douglas AI:</strong> <span class="ai-text"></span>`;
+    content.appendChild(aiMsgDiv);
+    
+    const textSpan = aiMsgDiv.querySelector('.ai-text');
     content.scrollTop = content.scrollHeight;
 
-    // Busca resposta no seu PC via ngrok
-    const resposta = await falarComOllama(text);
+    try {
+        const response = await fetch(NGROK_URL, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+                // REMOVIDO: ngrok-skip-browser-warning (ele causa o erro de CORS)
+            },
+            body: JSON.stringify({
+                model: "llama3",
+                messages: [{ role: "user", content: text }],
+                stream: true 
+            })
+        });
 
-    // Substitui o "Digitando..." pela resposta final
-    const loadingElement = document.getElementById(tempId);
-    if(loadingElement) {
-        loadingElement.innerHTML = `<strong>Douglas AI:</strong> ${resposta}`;
+        if (!response.ok) throw new Error("Erro no servidor");
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            let lines = buffer.split("\n");
+            buffer = lines.pop();
+
+            for (const line of lines) {
+                if (line.trim()) {
+                    try {
+                        const json = JSON.parse(line);
+                        if (json.message && json.message.content) {
+                            textSpan.textContent += json.message.content;
+                            content.scrollTop = content.scrollHeight;
+                        }
+                    } catch (e) {}
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Erro detalhado:", error);
+        textSpan.innerHTML = "<em>Falha na conexão. Verifique o console.</em>";
     }
-    content.scrollTop = content.scrollHeight;
 }
 
-// 5. Configuração dos gatilhos (Botões e Teclado)
+// 3. Configuração dos gatilhos (Botões e Teclado)
 document.addEventListener('DOMContentLoaded', function() {
-    // Botão flutuante (robô)
     const chatToggle = document.getElementById('chat-toggle');
-    if (chatToggle) chatToggle.onclick = openChat;
-
-    // Botão de enviar dentro do chat
     const sendBtn = document.querySelector('.send-btn');
-    if (sendBtn) sendBtn.onclick = handleChat;
-
-    // Tecla Enter no campo de texto
     const chatInput = document.getElementById('chat-input');
+
+    // Abre chat pelo botão flutuante ou link
+    if (chatToggle) chatToggle.onclick = openChat;
+    
+    // Envia mensagem pelo botão
+    if (sendBtn) sendBtn.onclick = handleChat;
+    
+    // Envia mensagem pelo ENTER
     if (chatInput) {
         chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') handleChat();
+            if (e.key === 'Enter') {
+                handleChat();
+                e.preventDefault();
+            }
         });
     }
 });
 
-// Chame o carregamento inicial do projeto (se já não estiver no final do seu arquivo)
+// Inicialização do restante do site
 if (typeof loadProject === 'function') {
     loadProject();
 }
