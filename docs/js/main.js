@@ -649,94 +649,97 @@ function loadProject() {
   });
 };
 
-// ========== CHATBOT IA LOCAL - INÍCIO ==========
-// Configuração - SUBSTITUA pelo IP do seu servidor umbrelOS
-const CHATBOT_URL = 'https://192.168.0.25:5000/'; 
+// ========== CHATBOT IA LOCAL - OLLAMA + NGROK ==========
 
-let isOnline = false;
+// 1. SUA URL DO NGROK (Copie do terminal e cole aqui)
+const NGROK_URL = "https://federally-uniparous-carlota.ngrok-free.dev/api/chat";
 
-async function checkChatbotHealth( ) {
+// 2. Função de comunicação com o seu PC
+async function falarComOllama(pergunta) {
     try {
-        const response = await fetch(`${CHATBOT_URL}/api/health`, {
-            method: 'GET',
-            mode: 'cors'
+        const response = await fetch(NGROK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                model: "llama3", // Verifique se é este o modelo no seu Ollama
+                messages: [
+                    { 
+                        role: "system", 
+                        content: "Você é o Douglas Virtual, assistente do portfólio do Douglas. Ele estuda Engenharia Elétrica na UFSM e é Técnico em Eletrotécnica. Responda de forma profissional e curta." 
+                    },
+                    { role: "user", content: pergunta }
+                ],
+                stream: false
+            })
         });
-        
-        if (response.ok) {
-            const data = await response.json();
-            isOnline = data.ollama_status === 'connected';
-        } else {
-            isOnline = false;
-        }
+        const data = await response.json();
+        return data.message.content;
     } catch (error) {
-        isOnline = false;
-    }
-    
-    updateChatStatus();
-}
-
-function updateChatStatus() {
-    const toggle = document.getElementById('chat-toggle');
-    
-    if (isOnline) {
-        toggle.classList.remove('offline');
-        toggle.title = 'IA Local Online - Clique para conversar!';
-    } else {
-        toggle.classList.add('offline');
-        toggle.title = 'IA Local Offline - Verifique o servidor';
+        console.error("Erro:", error);
+        return "No momento meu servidor local está offline. O Douglas precisa ligar o computador!";
     }
 }
 
+// 3. Funções de Controle da Interface (Modal)
 function openChat() {
-    if (!isOnline) {
-        alert('🔴 IA Local está offline. Verifique se o servidor está rodando.');
-        return;
-    }
-
     const modal = document.getElementById('chat-modal');
-    const iframe = document.getElementById('chat-iframe');
-    
-    if (!iframe.src) {
-        iframe.src = CHATBOT_URL;
-    }
-    
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    if(modal) modal.style.display = 'block';
 }
 
 function closeChat() {
     const modal = document.getElementById('chat-modal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    if(modal) modal.style.display = 'none';
 }
 
-// Event listeners
+// 4. Lógica de Envio e Exibição de Mensagens
+async function handleChat() {
+    const input = document.getElementById('chat-input');
+    const content = document.getElementById('chat-content');
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    // Adiciona sua mensagem na tela
+    content.innerHTML += `<div class="message user"><strong>Você:</strong> ${text}</div>`;
+    input.value = "";
+    content.scrollTop = content.scrollHeight;
+
+    // Cria um ID temporário para a resposta da IA (efeito de carregamento)
+    const tempId = "loading-" + Date.now();
+    content.innerHTML += `<div class="message ai" id="${tempId}"><em>Digitando...</em></div>`;
+    content.scrollTop = content.scrollHeight;
+
+    // Busca resposta no seu PC via ngrok
+    const resposta = await falarComOllama(text);
+
+    // Substitui o "Digitando..." pela resposta final
+    const loadingElement = document.getElementById(tempId);
+    if(loadingElement) {
+        loadingElement.innerHTML = `<strong>Douglas AI:</strong> ${resposta}`;
+    }
+    content.scrollTop = content.scrollHeight;
+}
+
+// 5. Configuração dos gatilhos (Botões e Teclado)
 document.addEventListener('DOMContentLoaded', function() {
+    // Botão flutuante (robô)
     const chatToggle = document.getElementById('chat-toggle');
-    if (chatToggle) {
-        chatToggle.onclick = openChat;
+    if (chatToggle) chatToggle.onclick = openChat;
+
+    // Botão de enviar dentro do chat
+    const sendBtn = document.querySelector('.send-btn');
+    if (sendBtn) sendBtn.onclick = handleChat;
+
+    // Tecla Enter no campo de texto
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') handleChat();
+        });
     }
-
-    const chatModal = document.getElementById('chat-modal');
-    if (chatModal) {
-        chatModal.onclick = function(e) {
-            if (e.target === this) {
-                closeChat();
-            }
-        };
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && document.getElementById('chat-modal').style.display === 'block') {
-            closeChat();
-        }
-    });
-
-    // Verificar status inicial e periodicamente
-    checkChatbotHealth();
-    setInterval(checkChatbotHealth, 30000);
 });
-// ========== CHATBOT IA LOCAL - FIM ==========
 
-
-loadProject();
+// Chame o carregamento inicial do projeto (se já não estiver no final do seu arquivo)
+if (typeof loadProject === 'function') {
+    loadProject();
+}

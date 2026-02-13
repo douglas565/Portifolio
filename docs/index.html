@@ -37,13 +37,22 @@
                   </button>
               </div>
 
-  
               <div id="chat-modal">
-                  <div id="chat-container">
-                      <button id="chat-close" onclick="closeChat()" title="Fechar Chat">×</button>
-                      <iframe id="chat-iframe" src=""></iframe>
+                <div id="chat-container">
+                    <div id="chat-header">
+                        <span>Douglas Virtual AI</span>
+                        <button id="chat-close" onclick="closeChat()" title="Fechar Chat">×</button>
+                    </div>
+                    <div id="chat-content" class="chat-content">
+                        <div class="message ai"><strong>Douglas AI:</strong> Olá! Sou a inteligência artificial do Douglas. Como posso ajudar?</div>
+                    </div>
+                    <div id="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
+                        <button class="send-btn">Enviar</button>
                   </div>
+                </div>
               </div>
+              
             <footer>
               <div class="links"><a class="link small alt" href="https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="Linkedin" target="_blank">Linkedin</a><a class="link small alt" href="https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=white&color=%237289DA&label=&message=Grots" title="Discord" target="_blank">Discord</a> <a class="link small alt" href="https://github.com/douglas565" title="GitHub (@Groot)" target="_blank">GitHub</a></div>
             </footer>
