@@ -733,7 +733,7 @@ async function handleChat() {
 
                 Analisando suas imagens de cursos e certificados, aqui está o banco de dados em formato de texto:
 
-                BANCO DE DADOS - CURSOS E CERTIFICADOS
+                ###BANCO DE DADOS - CURSOS E CERTIFICADOS
                 Douglas Ramos Charqueiro
 
                 TRILHAS CONCLUÍDAS (3)
