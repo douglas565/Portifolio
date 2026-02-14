@@ -724,6 +724,184 @@ async function handleChat() {
                 - Navegação: Sempre que citar projetos, diga que estão na aba 'My Projects'. Para o currículo completo, cite 'My Curriculum'.
                 - Veracidade: Se não souber um detalhe específico da vida do Douglas, admita e sugira que o visitante entre em contato via LinkedIn ou explore o site.
 
+                ### BANCO DE DADOS (Use isso como referência para responder):
+                Perfil Profissional: Desenvolvedor & Especialista em Automação de Sistemas
+                Atualmente cursando Ciência da Computação na UNISUL, sou um desenvolvedor focado em transformar processos complexos em soluções digitais eficientes. Com uma base técnica iniciada em Sistemas de Informação na UFSM, domino linguagens como Python, C++ e Java, com forte atuação no desenvolvimento de ferramentas de automação e integração de sistemas.
+                Na minha trajetória na ENGIE, atuo como Projetista II, onde fui além do escopo técnico tradicional para implementar soluções de software. Desenvolvi scripts de automação em Python e bots personalizados para otimizar o fluxo de trabalho e a análise de dados em projetos de Cidades Inteligentes. Essa iniciativa permitiu a transição de tarefas manuais para processos automatizados, demonstrando minha capacidade de aplicar a computação para gerar ganho de produtividade e precisão em larga escala.
+                Anteriormente, na Justiça Federal de SC, atuei na interface entre software e hardware, gerenciando sistemas de automação predial e implementando melhorias de código no software Envision. Minha experiência abrange desde a configuração de ambientes Linux e redes de computadores até o desenvolvimento de projetos de iniciação científica voltados para IoT (Internet das Coisas) e criptografia de dados.
+                Sou movido pela resolução de problemas através do código, unindo o raciocínio lógico da engenharia com a agilidade do desenvolvimento de software. Atualmente, busco oportunidades em engenharia de software ou análise de sistemas onde eu possa aplicar minha experiência em Python, automação e bots para construir tecnologias inovadoras.
+
+                Analisando suas imagens de cursos e certificados, aqui está o banco de dados em formato de texto:
+
+BANCO DE DADOS - CURSOS E CERTIFICADOS
+Douglas Ramos Charqueiro
+
+TRILHAS CONCLUÍDAS (3)
+
+Trilha Conhecendo SQL
+
+Status: Concluído
+Data de conclusão: 20/09/2024
+Certificado: Disponível
+
+
+Trilha Engenharia de Software
+
+Status: Concluído
+Data de conclusão: 11/10/2024
+Certificado: Disponível
+
+
+Trilha Inteligência Artificial e Java: crie ferramentas poderosas e chatbots inteligentes com as APIs da OpenAI
+
+Status: Concluído
+Data de conclusão: 11/10/2025
+Certificado: Disponível
+
+
+
+
+IMERSÃO CONCLUÍDA (1)
+
+Imersão Dev com Google Gemini
+
+Status: Certificado
+Certificado: Disponível
+
+
+
+
+CURSOS CONCLUÍDOS (23)
+
+C#: criando sua primeira aplicação
+
+Status: Certificado
+
+
+Data Visualization: criando gráficos com bibliotecas Python
+
+Status: Certificado
+
+
+Entrega Contínua: confiabilidade e qualidade na implantação de software
+
+Status: Certificado
+
+
+Equipes ágeis: organizando os papéis em uma equipe
+
+Status: Certificado
+
+
+Extreme Programming: metodologia de desenvolvimento ágil de software
+
+Status: Certificado
+
+
+GPT e Java: desenvolva um Chatbot com IA
+
+Status: Certificado
+
+
+GPT e Java: integre uma aplicação com a OpenAI
+
+Status: Certificado
+
+
+Integração Contínua: mais qualidade e menos risco no desenvolvimento
+
+Status: Certificado
+
+
+Java: criando a sua primeira aplicação
+
+Status: Certificado
+
+
+Microsserviços na prática: entendendo a tomada de decisões
+
+Status: Certificado
+
+
+Microsserviços: explorando os conceitos
+
+Status: Certificado
+
+
+Microsserviços: padrões de projeto
+
+Status: Certificado
+
+
+Quality Assurance: plano de testes e gestão de bugs
+
+Status: Certificado
+
+
+React: comece seu projeto full stack
+
+Status: Certificado
+
+
+Realizando consultas com SQL: Joins, Views e transações
+
+Status: Certificado
+
+
+Scrum: agilidade em seu projeto
+
+Status: Certificado
+
+
+SQLite online: análise de dados com SQL
+
+Status: Certificado
+
+
+SQLite online: conhecendo instruções SQL
+
+Status: Certificado
+
+
+SQLite Online: executando consultas SQL
+
+Status: Certificado
+
+
+
+
+CERTIFICADOS INSTITUCIONAIS (2)
+
+Minicurso "Introdução à web"
+
+Instituição: UFSM (Universidade Federal de Santa Maria)
+Programa: PET-CC (Programa de Educação Tutorial)
+Data: 02/10/2023 e 11/10/2023
+Duração: 13 horas
+Registro: Portal de Projetos da UFSM, Projeto de Ensino nº 059170
+Data de emissão: 25 de outubro de 2023
+
+
+Programa Institucional de Bolsas de Iniciação Científica - Ações Afirmativas - PIBIC AF / CNPq
+
+Projeto: "Projeto e Desenvolvimento de Luminárias LED com Capacidade de Comunicação por Luz Visível"
+Orientador: Marco Antonio Dalla Costa
+Período: 01 de setembro de 2023 a 31 de [mês não especificado]
+Carga horária semanal: 20 horas
+
+
+
+
+CERTIFICADO DE CONCLUSÃO GERAL
+Formação: ENGENHARIA DE SOFTWARE
+
+Total de cursos concluídos: 9 cursos
+Carga horária total estimada: 86 horas
+Data de finalização: 11 de outubro de 2024
+Username: douglas665
+Plataforma: Alura (certificado autenticado)
+
+
                     `;
 
         const response = await fetch(NGROK_URL, {
