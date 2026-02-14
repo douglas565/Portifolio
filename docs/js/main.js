@@ -677,6 +677,10 @@ async function handleChat() {
 
     if (!text) return;
 
+    // 1. LISTA DE BLOQUEIO (Palavras que fogem do seu portfólio)
+    const palavrasBloqueadas = ["receita", "bolo", "política", "futebol", "unidade de medida", "imperial", "clima", "previsão"];
+    const ehPerguntaForaDeContexto = palavrasBloqueadas.some(palavra => text.toLowerCase().includes(palavra));
+
     // Mensagem do Usuário
     content.innerHTML += `<div class="message user"><strong>Você:</strong> ${text}</div>`;
     input.value = "";
@@ -691,6 +695,12 @@ async function handleChat() {
     const textSpan = aiMsgDiv.querySelector('.ai-text');
     content.scrollTop = content.scrollHeight;
 
+    // 2. RESPOSTA INSTANTÂNEA PARA OFF-TOPIC (Sem gastar processamento da IA)
+    if (ehPerguntaForaDeContexto) {
+        textSpan.textContent = "No momento, estou disponível apenas para fornecer informações sobre o perfil profissional do Douglas. Posso te ajudar a conhecer os projetos dele?";
+        return; // Interrompe a execução aqui, nem chama o Ollama
+    }
+    
     try {
         const OBJETIVO_IA = `
                 Você é o 'Douglas Virtual', assistente exclusivo do portfólio de Douglas Ramos Charqueiro.
