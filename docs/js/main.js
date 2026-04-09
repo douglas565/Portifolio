@@ -911,7 +911,7 @@ async function handleChat() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                model: "llama3",
+                model: "qwen2.5:0.5b",
                 messages: [
                     { role: "system", content: OBJETIVO_IA }, // Aqui entra a configuração!
                     { role: "user", content: text }
