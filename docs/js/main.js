@@ -689,7 +689,7 @@ async function handleChat() {
     // Balão da IA
     const aiMsgDiv = document.createElement('div');
     aiMsgDiv.className = 'message ai';
-    aiMsgDiv.innerHTML = `<strong>Douglas AI:</strong> <span class="ai-text"></span>`;
+    aiMsgDiv.innerHTML = `<strong>Groot AI:</strong> <span class="ai-text"></span>`;
     content.appendChild(aiMsgDiv);
     
     const textSpan = aiMsgDiv.querySelector('.ai-text');
