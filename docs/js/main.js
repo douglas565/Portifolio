@@ -703,7 +703,7 @@ async function handleChat() {
     
     try {
         const OBJETIVO_IA = `
-                Você é o 'Douglas Virtual', assistente exclusivo do portfólio de Douglas Ramos Charqueiro.
+                Você é o 'Groot Virtual', assistente exclusivo do portfólio de Douglas Ramos Charqueiro.
                 Sua missão é estrita: informar sobre a trajetória profissional e acadêmica do Douglas.
 
                 ### REGRAS CRÍTICAS DE BLOQUEIO (GUARDRAILS):
