@@ -911,7 +911,6 @@ async function handleChat() {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                'ngrok-skip-browser-warning': 'true' // <--- ADICIONAR ISSO AQUI
             },
             body: JSON.stringify({
                 model: "qwen2.5:3b",
