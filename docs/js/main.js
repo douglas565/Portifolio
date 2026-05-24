@@ -907,7 +907,7 @@ async function handleChat() {
 
                     `;
 
-        const response = await fetch(NGROK_URL, {
+        const response = await fetch('https://hay-columbus-harbour-consecutive.trycloudflare.com/api/chat', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
