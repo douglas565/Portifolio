@@ -909,9 +909,12 @@ async function handleChat() {
 
         const response = await fetch(NGROK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': 'true' // <--- ADICIONAR ISSO AQUI
+            },
             body: JSON.stringify({
-                model: "qwen2.5:0.5b",
+                model: "qwen2.5:3b",
                 messages: [
                     { role: "system", content: OBJETIVO_IA }, // Aqui entra a configuração!
                     { role: "user", content: text }
