@@ -652,7 +652,7 @@ function loadProject() {
 /* --- CONFIGURAÇÃO IA LOCAL (OLLAMA + NGROK) --- */
 
 // Certifique-se de que a URL termina em /api/chat e não tem espaços
-const NGROK_URL = "https://federally-uniparous-carlota.ngrok-free.dev/api/chat";
+const NGROK_URL = "https://federally-uniparous-carlota.ngrok-free.app/api/chat";
 
 // 1. Funções de Controle da Interface (Modal)
 function openChat() {
