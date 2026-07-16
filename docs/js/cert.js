@@ -1,3 +1,53 @@
+// ===== Efeito Matrix colorido no fundo =====
+const matrixCanvas = document.getElementById("matrix-bg");
+const ctx = matrixCanvas.getContext("2d");
+
+function resizeCanvas() {
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// Caracteres que vão "cair"
+const letters = "アイウエオカキクケコサシスセソ0123456789ABCDEF</>{}$#@".split("");
+const fontSize = 16;
+let columns = Math.floor(matrixCanvas.width / fontSize);
+let drops = Array(columns).fill(1);
+
+// Cores que vão alternando (efeito colorido)
+const colors = ["#00ff88", "#00b4ff", "#b400ff", "#ff0080", "#ffea00"];
+
+function drawMatrix() {
+    // Rastro semitransparente (dá o efeito de "sumir" devagar)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+    ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        // Cor baseada na coluna, para variar
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Reinicia a gota no topo aleatoriamente
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+// Recalcula colunas ao redimensionar
+window.addEventListener("resize", () => {
+    columns = Math.floor(matrixCanvas.width / fontSize);
+    drops = Array(columns).fill(1);
+});
+
+setInterval(drawMatrix, 50); // velocidade da chuva (menor = mais rápido)
+
+
 class Slider {
     constructor(slider) {
         this.slider = slider;
@@ -8,6 +58,8 @@ class Slider {
         this.sliderNavigation = slider.querySelector(".slider-navigation");
         this.currentSlideIndex = 0;
         this.preloadedImages = {};
+        this.autoPlayDelay = 4000; // tempo em cada slide (4s)
+        this.autoPlayTimer = null;
         this.certificates = [
             "assets/pdf/web.pdf",
             "assets/pdf/IC.pdf",
@@ -24,7 +76,8 @@ class Slider {
         this.setupSlider();
         this.preloadImages();
         this.eventListeners();
-        this.updateDownloadLink(); // Atualiza o link inicialmente
+        this.updateDownloadLink();
+        this.startAutoPlay(); // inicia o modo automático
     }
 
     setupSlider() {
@@ -36,8 +89,9 @@ class Slider {
         const navButtonImg = this.navButtons[this.currentSlideIndex].querySelector("img");
         if (navButtonImg) {
             const imgClone = navButtonImg.cloneNode();
+            imgClone.classList.add("slide-fade"); // ativa animação de fade
             this.display.replaceChildren(imgClone);
-            this.updateDownloadLink(); // Atualiza o link ao trocar de slide
+            this.updateDownloadLink();
         }
         this.updateNavButtons();
     }
@@ -46,7 +100,6 @@ class Slider {
         this.navButtons.forEach((button, buttonIndex) => {
             const isSelected = buttonIndex === this.currentSlideIndex;
             button.setAttribute("aria-selected", isSelected);
-            if (isSelected) button.focus();
         });
     }
 
@@ -78,9 +131,21 @@ class Slider {
         downloadLink.download = this.certificates[this.currentSlideIndex];
     }
 
+    startAutoPlay() {
+        this.stopAutoPlay();
+        this.autoPlayTimer = setInterval(() => {
+            this.handleAction("next");
+        }, this.autoPlayDelay);
+    }
+
+    stopAutoPlay() {
+        if (this.autoPlayTimer) clearInterval(this.autoPlayTimer);
+    }
+
     eventListeners() {
         document.addEventListener("keydown", (event) => {
             this.handleAction(event.key);
+            this.startAutoPlay(); // reinicia contagem ao interagir
         });
 
         this.sliderNavigation.addEventListener("click", (event) => {
@@ -88,11 +153,22 @@ class Slider {
             const index = targetButton ? this.navButtons.indexOf(targetButton) : -1;
             if (index !== -1) {
                 this.showSlide(index);
+                this.startAutoPlay();
             }
         });
 
-        this.prevButton.addEventListener("click", () => this.handleAction("prev"));
-        this.nextButton.addEventListener("click", () => this.handleAction("next"));
+        this.prevButton.addEventListener("click", () => {
+            this.handleAction("prev");
+            this.startAutoPlay();
+        });
+        this.nextButton.addEventListener("click", () => {
+            this.handleAction("next");
+            this.startAutoPlay();
+        });
+
+        // Pausa quando o mouse está em cima, retoma ao sair
+        this.slider.addEventListener("mouseenter", () => this.stopAutoPlay());
+        this.slider.addEventListener("mouseleave", () => this.startAutoPlay());
     }
 
     handleAction(action) {

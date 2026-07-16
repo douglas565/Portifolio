@@ -20,25 +20,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-color);
+    background: #000;
+    overflow: hidden;
+    position: relative;
 }
 
+
+/* Canvas do efeito Matrix no fundo */
+#matrix-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: block;
+}
+
+/* Slider com brilho neon colorido */
 .image-slider {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-flow: column;
-    width: clamp(360px, 96vw, 830px);
+    width: clamp(360px, 90vw, 1100px);
     aspect-ratio: 16 / 9;
-    min-height: 300px;
+    min-height: 400px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 16px;
     container-type: inline-size;
     contain: content;
-    background-color: #0006;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 2px 4px,
-        rgba(0, 0, 0, 0.25) 0px 4px 8px, rgba(0, 0, 0, 0.2) 0px 8px 16px,
-        rgba(0, 0, 0, 0.15) 0px 16px 32px;
+    background: linear-gradient(145deg, rgba(20,20,30,0.85), rgba(40,20,50,0.85));
+    backdrop-filter: blur(4px);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 25px rgba(0, 255, 128, 0.4),
+                0 0 45px rgba(180, 0, 255, 0.3),
+                0 0 70px rgba(0, 180, 255, 0.2);
+    animation: neonPulse 4s ease-in-out infinite;
 }
 
+/* Pulso de cores nas bordas do slider */
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow: 0 0 25px rgba(0, 255, 128, 0.5),
+                    0 0 50px rgba(0, 180, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(180, 0, 255, 0.5),
+                    0 0 50px rgba(255, 0, 128, 0.3);
+    }
+}
 .slider__content {
     flex-grow: 1;
     display: flex;
@@ -89,9 +120,35 @@ body {
     --position: right;
 }
 
+/* Área de exibição do certificado */
 .image-display {
     position: fixed;
     inset: 0;
+    display: grid;
+    place-items: center;
+}
+
+.image-display img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Animação de transição suave (fade + leve zoom) */
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.slide-fade {
+    animation: slideFadeIn 900ms ease;
 }
 
 .slider-navigation {
@@ -111,13 +168,13 @@ body {
     display: grid;
     width: 100%;
     height: 100%;
-    border-radius: 0.5em;
+    border-radius: 0.6em;
     overflow: hidden;
     align-items: center;
     justify-content: center;
     border: 0;
     aspect-ratio: 16 / 9;
-    transition: filter 150ms linear, scale 266ms ease;
+    transition: filter 200ms linear, scale 300ms ease, box-shadow 300ms ease;
 }
 
 .thumbnail {
@@ -129,7 +186,8 @@ body {
 }
 
 .nav-button[aria-selected="true"] {
-    scale: 1.1;
+    scale: 1.12;
+    box-shadow: 0 0 12px var(--active-color);
 }
 
 .nav-button[aria-selected="true"],
@@ -173,38 +231,13 @@ body {
     }
 }
 
+/* Botão de download */
 .download-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     padding: 12px 24px;
-    background-color: #2196F3; /* Azul vibrante */
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    z-index: 20;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Adiciona transições suaves */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-}
-
-.download-button:hover {
-    background-color: #1976D2; /* Azul mais escuro ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
-    transform: translateY(-2px); /* Levemente para cima */
-}
-
-.download-button:active {
-    background-color: #1565C0; /* Azul ainda mais escuro ao clicar */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra reduzida ao clicar */
-    transform: translateY(0); /* Volta à posição original */
-}
-
-.back-button {  /* Estilos iguais ao download-button */
-    position: fixed;
-    bottom: 20px;
-    left: 20px;  /* Posicionado à esquerda */
-    padding: 12px 24px;
-    background-color: #2196F3; /* Azul vibrante */
+    background-color: #2196F3;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -213,14 +246,41 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.back-button:hover {
-    background-color: #1976D2; /* Azul mais escuro */
+.download-button:hover {
+    background-color: #1976D2;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
 
+.download-button:active {
+    background-color: #1565C0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+}
+
+/* Botão de voltar */
+.download-button,
+.back-button {
+    border: 2px solid red !important;
+    z-index: 30; 
+    background: linear-gradient(135deg, #00ff88, #00b4ff);
+    color: #05121f;
+    font-weight: bold;
+    border: none;
+    text-shadow: none;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+.download-button:hover,
+.back-button:hover {
+    background: linear-gradient(135deg, #b400ff, #ff0080);
+    color: white;
+    box-shadow: 0 0 20px rgba(180, 0, 255, 0.7);
+    transform: translateY(-2px);
+}
+
 .back-button:active {
-    background-color: #1565C0; /* Azul ainda mais escuro */
+    background-color: #1565C0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     transform: translateY(0);
 }
