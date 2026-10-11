@@ -1,71 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.github.io; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://*.github.io https://malihu.github.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.github.io https://malihu.github.io; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.github.io https://beta.yahiarefaiea.com; connect-src 'self' https://*.ngrok-free.app https://*.ngrok-free.dev https://*.trycloudflare.com;">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script defer src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script defer src="js/main.js"></script>
-    <title>Portifolio - Douglas Ramos Charqueiro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131a">
+  <meta name="description" content="Portfólio de Douglas Ramos Charqueiro — desenvolvimento, automação e tecnologia.">
+  <title>Douglas Ramos Charqueiro — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site-polish.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script defer src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <canvas id="stars"></canvas>
-        <canvas id="yahia"></canvas>
-        <div class="container">
-          <div class="template color-yellow" data-template="home">
-            <main>
-              <h1><span>Douglas Ramos</span> 
-                  <span> Developer <mark> & </mark></span>Computer Science</h1>
-              <div class="p"><span>douglas.ramos16@outlook.com </span><span>(55) 99189-3927</span></div>
-              <div class="links">
-                <a class="link color-yellow" href="space.html" title="My Projects">My Projects</a>
-                <a class="link color-green" href="cert.html" title="My Certificates">My Certificates</a>
-                <a class="link color-red" href="curriculo.html" title="Resume">My Curriculum</a>
-                <a class="link color-yellow" href="javascript:openChat()" title="Chat with AI">💬 Chat com IA</a>
-              </div>
-            </main>
-            
-              <div id="chat-widget">
-                  <button id="chat-toggle" class="pulse" title="Converse comigo através da IA!">
-                      🤖
-                  </button>
-              </div>
-
-              <div id="chat-modal">
-                <div id="chat-container">
-                    <div id="chat-header">
-                        <span>Groot Virtual AI</span>
-                        <button id="chat-close" onclick="closeChat()" title="Fechar Chat">×</button>
-                    </div>
-                    <div id="chat-content" class="chat-content">
-                        <div class="message ai"><strong>Groot AI:</strong> Olá! Sou a inteligência artificial do Douglas. Como posso ajudar?</div>
-                    </div>
-                    <div id="chat-input-area">
-                        <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
-                        <button class="send-btn">Enviar</button>
-                  </div>
-                </div>
-              </div>
-
-            <footer>
-              <div class="links"><a class="link small alt" href="https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="Linkedin" target="_blank">Linkedin</a><a class="link small alt" href="https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=white&color=%237289DA&label=&message=Grots" title="Discord" target="_blank">Discord</a> <a class="link small alt" href="https://github.com/douglas565" title="GitHub (@Groot)" target="_blank">GitHub</a></div>
-            </footer>
+  <div class="wrapper">
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <canvas id="yahia" aria-hidden="true"></canvas>
+    <div class="container">
+      <section class="template color-yellow" data-template="home" aria-labelledby="intro-title">
+        <main>
+          <p class="eyebrow">PORTFÓLIO · DESENVOLVIMENTO & AUTOMAÇÃO</p>
+          <h1 id="intro-title"><span>Douglas Ramos</span><span>Desenvolvedor <mark>&</mark></span>Ciência da Computação</h1>
+          <p class="intro-copy">Transformo desafios do dia a dia em soluções digitais úteis, eficientes e bem construídas.</p>
+          <div class="contact-line" aria-label="Informações de contato">
+            <a href="mailto:douglas.ramos16@outlook.com">douglas.ramos16@outlook.com</a>
+            <span aria-hidden="true">·</span>
+            <a href="tel:+5555991893927">(55) 99189-3927</a>
           </div>
-          <div class="loading" id="identity" title="Douglas Ramos identity">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <a class="loading" id="signature" href="https://www.google.com/?hl=pt_BR" title="Go to home" target="_blank"></a>
-        </div>
-      </div>
+          <nav class="links primary-links" aria-label="Navegação principal">
+            <a class="link color-yellow" href="space.html" title="Conheça meus projetos">Projetos <span aria-hidden="true">↗</span></a>
+            <a class="link color-green" href="cert.html" title="Veja meus certificados">Certificados <span aria-hidden="true">↗</span></a>
+            <a class="link color-red" href="curriculo.html" title="Acesse meu currículo">Currículo <span aria-hidden="true">↗</span></a>
+          </nav>
+        </main>
+        <footer>
+          <nav class="links social-links" aria-label="Redes profissionais">
+            <a class="link small alt" href="https://www.linkedin.com/in/douglas-ramos-charqueiro-075a87293/" title="Perfil no LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="link small alt" href="https://github.com/douglas565" title="Perfil no GitHub" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </nav>
+        </footer>
+      </section>
+      <div class="loading" id="identity" aria-hidden="true"><div></div><div></div><div></div><div></div></div>
+      <a class="loading" id="signature" href="index.html" aria-label="Voltar ao início"></a>
+    </div>
+  </div>
 </body>
 </html>
