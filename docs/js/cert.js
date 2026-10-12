@@ -1,17 +1,15 @@
 /* Local certificate catalogue and accessible live filtering. */
 const certificates = [
-  { title: "Assinatura digital", category: "Documento profissional", file: "Assinatura.pdf" },
-  { title: "Documento digitalizado — fevereiro de 2024", category: "Documento", file: "CamScanner 19-02-2024 09.05.pdf" },
-  { title: "Certificado — documento 1", category: "Certificado", file: "Certificado.pdf" },
-  { title: "Ciência da Computação — CS50 (Harvard)", category: "Ciência da Computação", file: "Certificado - Douglas Ramos Charqueiro-CS50 Havard.pdf" },
-  { title: "Certificado — documento 2", category: "Certificado", file: "Certificado (1).pdf" },
-  { title: "Certificado — documento 3", category: "Certificado", file: "Certificado (2).pdf" },
-  { title: "Certificado IC", category: "Formação", file: "Certificado IC.pdf" },
-  { title: "Técnico em Eletrotécnica", category: "Formação técnica", file: "Certificado Técnico em eletrotecnica.pdf" },
-  { title: "Certificado ABNT", category: "Normas técnicas", file: "Certificado_ABNT_Douglas Ramos Charuqueiro.pdf" },
-  { title: "Certificado — documento 4", category: "Certificado", file: "Certificado-drive-2.pdf" },
-  { title: "Por dentro da Segurança Cibernética", category: "Segurança cibernética", file: "Por_dentro_da_Segurança_Cibernética-Certificado_2956845.pdf" },
-  { title: "Programação Básica em HTML", category: "Desenvolvimento web", file: "Programação_Básica_em_HTML-Certificado_de_Conclusão_5372.pdf" }
+  { title: "Estruturas de Dados e Análise de Algoritmos", category: "Graduação — UNISUL", file: "Certificado (1).pdf" },
+  { title: "Ambientes Computacionais e Conectividade", category: "Graduação — UNISUL", file: "Certificado (2).pdf" },
+  { title: "Teoria da Computação e Compiladores", category: "Graduação — UNISUL", file: "Certificado-drive-2.pdf" },
+  { title: "Ciência da Computação de Harvard no Brasil — Fundação Estudar", category: "Programação", file: "Certificado - Douglas Ramos Charqueiro-CS50 Havard.pdf" },
+  { title: "Iniciação Científica — PIBIC/CNPq (UFSM)", category: "Pesquisa", file: "Certificado IC.pdf" },
+  { title: "Técnico em Eletrotécnica — UFSM/CTISM", category: "Formação técnica", file: "Certificado Técnico em eletrotecnica.pdf" },
+  { title: "Minicurso Introdução à Web — PET/CC (UFSM)", category: "Minicurso", file: "Certificado.pdf" },
+  { title: "Oficina de ABNT para Trabalhos Acadêmicos", category: "Normas técnicas", file: "Certificado_ABNT_Douglas Ramos Charuqueiro.pdf" },
+  { title: "Por dentro da Segurança Cibernética — SENAI", category: "Segurança cibernética", file: "Por_dentro_da_Segurança_Cibernética-Certificado_2956845.pdf" },
+  { title: "Programação Básica em HTML — RECODE", category: "Desenvolvimento web", file: "Programação_Básica_em_HTML-Certificado_de_Conclusão_5372.pdf" }
 ];
 
 const grid = document.getElementById("certificate-grid");
